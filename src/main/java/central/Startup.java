@@ -3,6 +3,7 @@ package central;
 import module.one.Car;
 import module.one.DaggerCarComponent;
 import module.three.PetroilEngineModule;
+import module.three.PetroilEngineModule2;
 
 public class Startup {
 
@@ -31,6 +32,11 @@ public class Startup {
         module.three.Car car3 = module.three.DaggerCarComponent2.builder()
                 .petroilEngineModule(new PetroilEngineModule(100)).build().createCar();
         car3.drive();
+
+        module.three.Car car4 = module.three.DaggerCarComponent4.builder()
+                .petroilEngineModule2(new PetroilEngineModule2(200)).build().createCar();
+        car4.drive();
+
     }
 
     private static void startModuleOne() {
