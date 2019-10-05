@@ -18,6 +18,14 @@ public class Startup {
         // interfaces
         startModuleThree();
 
+        // injecting runtime values using builder
+        startModuleEight();
+    }
+
+    private static void startModuleEight() {
+        module.eight.Car car = module.eight.DaggerCarComponent.builder()
+                .horsePower(150).engineCapacity(80).build().createCar();
+        car.drive();
     }
 
     private static void startModuleThree() {
@@ -30,11 +38,13 @@ public class Startup {
         car2.drive();
 
         module.three.Car car3 = module.three.DaggerCarComponent2.builder()
-                .petroilEngineModule(new PetroilEngineModule(100)).build().createCar();
+                .petroilEngineModule(new PetroilEngineModule(100)).build()
+                .createCar();
         car3.drive();
 
         module.three.Car car4 = module.three.DaggerCarComponent4.builder()
-                .petroilEngineModule2(new PetroilEngineModule2(200)).build().createCar();
+                .petroilEngineModule2(new PetroilEngineModule2(200)).build()
+                .createCar();
         car4.drive();
 
     }
