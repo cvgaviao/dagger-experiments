@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import atm.Command.Status;
-import atm.commands.HelloWorldCommand;
 
 public class CommandRouter {
 
@@ -19,9 +18,9 @@ public class CommandRouter {
     private final Map<String, Command> commands = new HashMap<>();
 
     @Inject
-    public CommandRouter(HelloWorldCommand helloWorldCommand) {
+    public CommandRouter(Command pCommand) {
         super();
-        commands.put(helloWorldCommand.key(), helloWorldCommand);
+        commands.put(pCommand.key(), pCommand);
     }
 
     private Status invalidCommand(String input) {
