@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import atm.Command.Status;
 
 public class CommandRouter {
@@ -14,6 +16,11 @@ public class CommandRouter {
     }
 
     private final Map<String, Command> commands = Collections.emptyMap();
+
+    @Inject
+    public CommandRouter() {
+        super();
+    }
 
     private Status invalidCommand(String input) {
         System.out.println(String.format(
