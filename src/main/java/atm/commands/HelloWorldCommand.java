@@ -5,12 +5,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 import atm.Command;
+import atm.Outputter;
 
-public class HelloWorldCommand implements Command {
+public class HelloWorldCommand extends AbstractCommand implements Command {
 
     @Inject
-    public HelloWorldCommand() {
-        super();
+    public HelloWorldCommand(Outputter pOutputter) {
+        super(pOutputter);
     }
 
     @Override
@@ -23,8 +24,7 @@ public class HelloWorldCommand implements Command {
         if (!pInput.isEmpty()) {
             return Status.INVALID;
         }
-        System.out.println("world!");
+        getOutputter().output("world!");
         return Status.HANDLED;
     }
 }
-
