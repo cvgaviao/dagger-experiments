@@ -2,6 +2,7 @@ package central;
 
 import module.one.Car;
 import module.one.DaggerCarComponent;
+import module.ten.CarComponent;
 import module.three.PetroilEngineModule;
 import module.three.PetroilEngineModule2;
 
@@ -20,6 +21,34 @@ public class Startup {
 
         // injecting runtime values using builder
         startModuleEight();
+
+        // injecting singleton
+        startModuleTen();
+
+        // component factory
+        startModuleThirteen();
+    }
+
+    private static void startModuleThirteen() {
+        module.thirteen.CarComponent carComponent = module.thirteen.DaggerCarComponent
+                .factory().carFactory(150, 800);
+        module.thirteen.Car car1 = carComponent.createCar();
+        car1.drive();
+        module.thirteen.Car car2 = carComponent.createCar();
+        car2.drive();
+    }
+
+    private static void startModuleTen() {
+
+        CarComponent carComponent = module.ten.DaggerCarComponent.builder()
+                .horsePower(150).engineCapacity(80).build();
+
+        // Deals with singleton
+        module.ten.Car car1 = carComponent.createCar();
+        car1.drive();
+        module.ten.Car car2 = carComponent.createCar();
+        car2.drive();
+
     }
 
     private static void startModuleEight() {
