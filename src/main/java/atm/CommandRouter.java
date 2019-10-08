@@ -1,12 +1,13 @@
 package atm;
 
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import atm.Command.Status;
+import atm.commands.HelloWorldCommand;
 
 public class CommandRouter {
 
@@ -15,11 +16,12 @@ public class CommandRouter {
         return List.of(string.split(" "));
     }
 
-    private final Map<String, Command> commands = Collections.emptyMap();
+    private final Map<String, Command> commands = new HashMap<>();
 
     @Inject
-    public CommandRouter() {
+    public CommandRouter(HelloWorldCommand helloWorldCommand) {
         super();
+        commands.put(helloWorldCommand.key(), helloWorldCommand);
     }
 
     private Status invalidCommand(String input) {
